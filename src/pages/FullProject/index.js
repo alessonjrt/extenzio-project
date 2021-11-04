@@ -21,9 +21,6 @@ export default function FullProject({ route }) {
 
 
   const navigation = useNavigation()
-  var urid;
-  var qtd;
-  var liked = [];
 
   useEffect(() => {
     async function tryData() {
