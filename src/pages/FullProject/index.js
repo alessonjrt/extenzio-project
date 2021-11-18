@@ -20,7 +20,7 @@ export default function FullProject({ route }) {
   const [connectionsData, setConnectionsData] = useState([])
 
 
-  const navigation = useNavigation()
+  const navigation = useNavigation();
 
   useEffect(() => {
     async function tryData() {
@@ -87,7 +87,7 @@ export default function FullProject({ route }) {
                 cId: cheese.cId,
                 qtd: projectData.commentqtd
               }
-              urid = cheese.userId
+             
 
 
               setResults((oldArray) => [...oldArray, cheese]);
@@ -324,51 +324,51 @@ export default function FullProject({ route }) {
       </Modal>
       <View style={styles.container}>
         <Header2 titulo={"Projeto"} />
-          <Card style={styles.card}>
-            <Card.Content>
-              <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                <View>
-                  <Text>{projectData.nome}</Text>
-                  <Text>{projectData.usuario}</Text>
-                </View>
-                {mineOrNot()}
+        <Card style={styles.card}>
+          <Card.Content>
+            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+              <View>
+                <Text>{projectData.nome}</Text>
+                <Text>{projectData.usuario}</Text>
               </View>
-              <Title style={{ color: '#6d0ad6' }}>{projectData.titulo}</Title>
-              <Paragraph>{projectData.descricao}</Paragraph>
-            </Card.Content>
-            <View style={{ display: 'flex', alignItems: 'center' }}>
-              <Image
-                style={styles.imageBox}
-                source={{
-                  uri: projectData.url
-                }}></Image>
+              {mineOrNot()}
             </View>
-            <View style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', padding: 10, marginLeft: 5 }}>
-              {bolsa()}
-              {certificate()}
-              <View style={{ marginLeft: 10, marginRight: 10, marginTop: 10, display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-                <Text style={{ color: '#ff8940', fontWeight: 'bold' }}>{projectData.vag}</Text>
-                <FontAwesome5 style={{ marginLeft: 5 }} name="user-graduate" size={20} color="#ff8940" />
-              </View>
-              <View style={{ marginLeft: 220, marginRight: 10, marginTop: 10, display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
-                <Text style={{ color: '#ff8940', fontWeight: 'bold' }}>{projectData.likes}</Text>
-                <FontAwesome5 style={{ marginLeft: 5 }} name="hand-holding-heart" size={20} color="#ff8940" />
-              </View>
+            <Title style={{ color: '#6d0ad6' }}>{projectData.titulo}</Title>
+            <Paragraph>{projectData.descricao}</Paragraph>
+          </Card.Content>
+          <View style={{ display: 'flex', alignItems: 'center' }}>
+            <Image
+              style={styles.imageBox}
+              source={{
+                uri: projectData.url
+              }}></Image>
+          </View>
+          <View style={{ display: 'flex', alignItems: 'center', flexDirection: 'row', padding: 10, marginLeft: 5 }}>
+            {bolsa()}
+            {certificate()}
+            <View style={{ marginLeft: 10, marginRight: 10, marginTop: 10, display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+              <Text style={{ color: '#ff8940', fontWeight: 'bold' }}>{projectData.vag}</Text>
+              <FontAwesome5 style={{ marginLeft: 5 }} name="user-graduate" size={20} color="#ff8940" />
             </View>
-            <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginRight: 5 }}>
-              <TouchableOpacity onPress={() => { setCommentModal(!commentModal) }} style={styles.likebutton}>
-                <FontAwesome name="comment" size={24} color="white" />
-                <Text style={{ color: 'white', marginLeft: 5, fontWeight: 'bold' }}>{projectData.commentqtd}</Text>
-              </TouchableOpacity>
-              {likedOrNot()}
+            <View style={{ marginLeft: 220, marginRight: 10, marginTop: 10, display: 'flex', alignItems: 'center', flexDirection: 'row' }}>
+              <Text style={{ color: '#ff8940', fontWeight: 'bold' }}>{projectData.likes}</Text>
+              <FontAwesome5 style={{ marginLeft: 5 }} name="hand-holding-heart" size={20} color="#ff8940" />
             </View>
-            {imon()}
-          </Card>
+          </View>
+          <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginRight: 5 }}>
+            <TouchableOpacity onPress={() => { setCommentModal(!commentModal) }} style={styles.likebutton}>
+              <FontAwesome name="comment" size={24} color="white" />
+              <Text style={{ color: 'white', marginLeft: 5, fontWeight: 'bold' }}>{projectData.commentqtd}</Text>
+            </TouchableOpacity>
+            {likedOrNot()}
+          </View>
+          {imon()}
+        </Card>
         <FlatList
-            data={results.sort(compare)}
-            renderItem={renderItem}
-            keyExtractor={item => item.id}
-          />
+          data={results.sort(compare)}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+        />
       </View>
     </>
   );
